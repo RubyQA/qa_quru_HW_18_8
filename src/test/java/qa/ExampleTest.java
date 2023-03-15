@@ -5,6 +5,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import qa.components.PracticeFormPage;
+import static qa.testData.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class ExampleTest {
 
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1700x1200";
@@ -20,37 +21,38 @@ public class ExampleTest {
     }
 
     @Test
-    void fillFormTest(){
+    void fillFormTest() {
+
         open("/automation-practice-form");
         PracticeFormPage form = new PracticeFormPage();
         form.removeElements();
 
         // здесь используем значения переменных для заполнения формы
-        form.setFirstName(qa.testData.firstName);
-        form.setLastName(qa.testData.lastName);
-        form.setUserEmail(qa.testData.userEmail);
-        form.selectGender(qa.testData.gender);
-        form.setDateOfBirth(qa.testData.dayOfBirth,qa.testData.month, qa.testData.yearOfBirth);
-        form.setUserNumber(qa.testData.userNumber);
-        form.setSubject(qa.testData.subject);
-        form.selectHobby(qa.testData.hobby);
-        form.uploadPicture(qa.testData.picturePath);
-        form.setCurrentAddress(qa.testData.currentAddress);
-        form.selectState(qa.testData.state);
-        form.selectCity(qa.testData.city);
+        form.setFirstName(firstName);
+        form.setLastName(lastName);
+        form.setUserEmail(userEmail);
+        form.selectGender(gender);
+        form.setDateOfBirth(dayOfBirth, month, yearOfBirth);
+        form.setUserNumber(userNumber);
+        form.setSubject(subject);
+        form.selectHobby(hobby);
+        form.uploadPicture(picturePath);
+        form.setCurrentAddress(currentAddress);
+        form.selectState(state);
+        form.selectCity(city);
         form.submitForm();
 
         // здесь проверяем, что заполненные значения соответствуют значениям переменных
-        form.checkTable(qa.testData.firstName + " " + qa.testData.lastName);
-        form.checkTable(qa.testData.userEmail);
-        form.checkTable(qa.testData.gender);
-        form.checkTable(qa.testData.userNumber);
-        form.checkTable(qa.testData.dayOfBirth+" "+ qa.testData.month+","+qa.testData.yearOfBirth);
-        form.checkTable(qa.testData.subject);
-        form.checkTable(qa.testData.hobby);
-        form.checkTable(qa.testData.picturePath);
-        form.checkTable(qa.testData.currentAddress);
-        form.checkTable(qa.testData.state + " " + qa.testData.city);
+        form.checkTable(firstName + " " + lastName);
+        form.checkTable(userEmail);
+        form.checkTable(gender);
+        form.checkTable(userNumber);
+        form.checkTable(dayOfBirth + " " + month + "," + yearOfBirth);
+        form.checkTable(subject);
+        form.checkTable(hobby);
+        form.checkTable(picturePath);
+        form.checkTable(currentAddress);
+        form.checkTable(state + " " + city);
     }
 
 }
