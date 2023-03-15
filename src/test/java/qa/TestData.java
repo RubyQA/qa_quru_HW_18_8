@@ -3,7 +3,7 @@ package qa;
 import com.github.javafaker.Faker;
 
 
-public class testData {
+public class TestData {
 
     static Faker faker = new Faker();
 
